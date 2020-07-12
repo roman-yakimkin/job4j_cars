@@ -8,13 +8,13 @@
         <property name="hibernate.connection.url">jdbc:postgresql://127.0.0.1:5432/cars</property>
         <property name="hibernate.connection.username">postgres</property>
         <property name="hibernate.connection.password">password</property>
-        <property name="hibernate.connection.pool_size">100</property>
+        <property name="hibernate.connection.pool_size">500</property>
         <property name="hibernate.current_session_context_class">thread</property>
         <property name="hibernate.show_sql">true</property>
         <property name="hibernate.dialect">org.hibernate.dialect.PostgreSQL10Dialect</property>
 
-        <mapping class="ru.job4j.cars.model.Engine" />
-        <mapping class="ru.job4j.cars.model.Car" />
-        <mapping class="ru.job4j.cars.model.Owner" />
+        <mapping resource="Engine.hbm.xml" />
+        <mapping resource="Car.hbm.xml" />
+        <mapping resource="Owner.hbm.xml" />
     </session-factory>
 </hibernate-configuration>

@@ -9,11 +9,7 @@ import java.util.Objects;
  * @since 08.07.2020
  * @versin 1.0
  */
-@Entity
-@Table(name = "engine")
 public class Engine {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String name;
 
@@ -55,5 +51,10 @@ public class Engine {
     @Override
     public int hashCode() {
         return Objects.hash(getId());
+    }
+
+    @Override
+    public String toString() {
+        return "Engine{" +  "id=" + id + ", name='" + name + '\'' + '}';
     }
 }

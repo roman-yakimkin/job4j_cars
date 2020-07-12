@@ -9,29 +9,11 @@ import java.util.*;
  * @since 08.07.2020
  * @version 1.0
  */
-@Entity
-@Table (name = "car")
 public class Car {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "history_owner",
-            joinColumns = {
-                    @JoinColumn(name = "car_id", nullable = true, updatable = true)
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "owner_id", nullable = true, updatable = true)
-            }
-    )
-    private Set<Owner> owners = new HashSet<>();
-
-    @ManyToOne
-    @JoinColumn(name = "engine_id")
     private Engine engine;
+    private Set<Owner> owners = new HashSet<>();
 
     public Car() { }
 
@@ -109,6 +91,6 @@ public class Car {
         } catch (Exception e) {
             strOwners = "none";
         }
-        return "Car{" + "id=" + id + ", name='" + name + '\'' + ", owners=" + strOwners + '}';
+        return "Car{" + "id=" + id + ", name='" + name + '\'' + ", engine=" + engine.getName() + " ,owners=" + strOwners + '}';
     }
 }

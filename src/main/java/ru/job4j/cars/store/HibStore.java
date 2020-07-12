@@ -40,6 +40,7 @@ public class HibStore implements Store {
             return result;
         } catch (final Exception e) {
             session.getTransaction().rollback();
+            e.printStackTrace();
         } finally {
             session.close();
         }
@@ -163,6 +164,9 @@ public class HibStore implements Store {
         Engine carburetor = HibStore.instOf().getEngine(1);
         Engine diesel = HibStore.instOf().getEngine(2);
         Engine electric = HibStore.instOf().getEngine(3);
+
+        System.out.println("Engines list ======================");
+        HibStore.instOf().getEngines().forEach(System.out::println);
 
         Car car1 = new Car();
         car1.setName("Car 1 with carburetor engine");

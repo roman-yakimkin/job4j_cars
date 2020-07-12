@@ -9,24 +9,9 @@ import java.util.*;
  * @since 08.07.2020
  * @version 1.0
  */
-@Entity
-@Table (name = "owner")
 public class Owner {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     private String name;
-
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinTable(name = "history_owner",
-            joinColumns = {
-                    @JoinColumn(name = "owner_id", nullable = true, updatable = true)
-            },
-            inverseJoinColumns = {
-                    @JoinColumn(name = "car_id", nullable = true, updatable = true)
-            }
-    )
     Set<Car> cars = new HashSet<>();
 
     public Owner() { }

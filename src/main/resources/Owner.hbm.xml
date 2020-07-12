@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="ru.job4j.cars.model.Owner" table="owner" catalog="public">
+        <id name="id" type="int">
+            <column name="id" />
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="name" />
+        </property>
+        <set name="cars" table="history_owner" lazy="false" fetch="select" cascade="all">
+            <key>
+                <column name="owner_id" />
+            </key>
+            <many-to-many entity-name="ru.job4j.cars.model.Car">
+                <column name="car_id" />
+            </many-to-many>
+        </set>
+    </class>
+</hibernate-mapping>
